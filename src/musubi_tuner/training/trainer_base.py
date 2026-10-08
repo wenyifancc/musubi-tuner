@@ -2258,9 +2258,7 @@ class NetworkTrainer:
 
         epoch_to_start = training_state.epoch if training_state.loaded else 0
         global_step = training_state.global_step if training_state.loaded else 0
-        last_sampled_step = (
-            global_step if training_state.loaded and should_sample_images(args, global_step, epoch=None) else None
-        )
+        last_sampled_step = global_step if training_state.loaded and should_sample_images(args, global_step, epoch=None) else None
         progress_bar = tqdm(
             total=args.max_train_steps,
             initial=global_step,
